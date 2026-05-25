@@ -1,29 +1,23 @@
-name: 01 - Checkout Test
+name:  02 - Trigger Test  
 
 on:
-  workflow_dispatch:
-
+ workflow_dispatch:
+ push:
+  branches:
+      - main
+ 
 jobs:
-  checkout-test:
-    runs-on: ubuntu-latest
+  trigger-test:
+   runs-on: ubuntu-latest 
 
-    steps:
-      - name: Before checkout - list files
-        run: |
-          echo "BEFORE CHECKOUT"
-          pwd
-          ls -la
+   steps:
+    - name:  Say trigger started 
+      run: echo "Workflow  worked
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4
+    
+    - name: Show files after checkout 
+      run: ls -la
 
-      - name: After checkout - list files
-        run: |
-          echo "AFTER CHECKOUT"
-          pwd
-          ls -la
-
-      - name: Show project files
-        run: |
-          echo "PROJECT FILES"
-          find . -maxdepth 2 -type f | sort
+     
