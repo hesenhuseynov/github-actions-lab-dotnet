@@ -1,0 +1,18 @@
+name: 01 - Basic GitHub Actions Test
+
+on:
+  workflow_dispatch:
+
+jobs:
+  first-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Say hello
+        run: echo "Salam, GitHub Actions işləyir!"
+
+      - name: Show current folder
+        run: pwd
+
+      - name: Show files
+        run: ls -la
