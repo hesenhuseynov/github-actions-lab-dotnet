@@ -12,7 +12,7 @@ jobs:
 
    steps:
     - name:  Say trigger started 
-      run: echo "Workflow  worked
+      run: echo "Workflow  worked"
 
     - name: Checkout repository
       uses: actions/checkout@v4
@@ -20,4 +20,5 @@ jobs:
     - name: Show files after checkout 
       run: ls -la
 
+    
      
