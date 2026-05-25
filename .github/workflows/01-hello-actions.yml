@@ -1,6 +1,6 @@
 name: 04-DotNet CI Basics  
 
-run-name: Run by @${{github.actor a}} on ${{github.event_name}}
+run-name: Run by @${{github.actor}} on ${{github.event_name}}
 
 on:
  workflow_dispatch:
