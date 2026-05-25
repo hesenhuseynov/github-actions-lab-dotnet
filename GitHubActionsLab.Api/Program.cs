@@ -47,8 +47,6 @@ namespace GitHubActionsLab.Api
             .WithName("GetWeatherForecast")
             .WithOpenApi();
 
-
-
             app.Run();
         }
     }
