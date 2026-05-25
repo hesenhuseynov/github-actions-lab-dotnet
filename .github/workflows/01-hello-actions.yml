@@ -1,26 +1,29 @@
-name: 01-Basic Workflow Test
+name: 01 - Checkout Test
 
 on:
- workflow_dispatch:
-  
+  workflow_dispatch:
 
 jobs:
-   hello-job:
+  checkout-test:
     runs-on: ubuntu-latest
 
     steps:
-     
-    - name: Say hello 
-      run: echo "Salam  ,Github Actions isleyir!"
+      - name: Before checkout - list files
+        run: |
+          echo "BEFORE CHECKOUT"
+          pwd
+          ls -la
 
-    - name: Show current directory 
-      run: pwd 
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: list files
-      run: ls -la
+      - name: After checkout - list files
+        run: |
+          echo "AFTER CHECKOUT"
+          pwd
+          ls -la
 
-
-
-
-    
-   
+      - name: Show project files
+        run: |
+          echo "PROJECT FILES"
+          find . -maxdepth 2 -type f | sort
