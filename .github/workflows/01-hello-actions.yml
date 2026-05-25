@@ -1,29 +1,54 @@
-name: 03 - Pull Request Trigger Test
+name: 04-DotNet CI Basics  
+
+run-name: Run by @${{github.actor a}} on ${{github.event_name}}
 
 on:
-  workflow_dispatch:
-
-  push:
-    branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
-
+ workflow_dispatch:
+  
+ push: 
+  branches:
+  - main 
+  
+ pull_request: 
+  branches:
+  - main
+ 
 jobs:
-  pr-trigger-test:
+   build-and-test:
+    name: Build and test .NET project
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show event name
-        run: echo "Event name is ${{ github.event_name }}"
+    - name: Show event info
+      run: |
+        echo "Event name: ${{ github.event_name }}"
+        echo "Repository: ${{ github.repository }}"
+        echo "Actor: ${{ github.actor }}"
+      
+    - name: Checkout repository
+      uses: actions/checkout@v4 
 
-      - name: Show branch/ref
-        run: echo "Git ref is ${{ github.ref }}"
+    - name: Show files after checkout
+      run: ls -la 
 
-      - name: Checkout repository
-        uses: actions/checkout@v4
+    - name: Setup .NET 
+      uses: actions/setup-dotnet@v4
+      with:
+         dotnet-version: '8.0.x'
+     
+    - name: Restore 
+      run: dotnet restore 
 
-      - name: Show files
-        run: ls -la
+    - name: Build 
+      run: dotnet build --configuration Release --no-restore 
+
+    - name: Test 
+      run:  dotnet test --configuration Release  --no-build
+
+     
+
+      
+  
+  
+   
+    
