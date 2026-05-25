@@ -1,18 +1,26 @@
-name: 01 - Basic GitHub Actions Test
+name: 01-Basic Workflow Test
 
 on:
-  workflow_dispatch:
+ workflow_dispatch:
+  
 
 jobs:
-  first-test:
+   hello-job:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Say hello
-        run: echo "Salam, GitHub Actions işləyir!"
+     
+    - name: Say hello 
+      run: echo "Salam  ,Github Actions isleyir!"
 
-      - name: Show current folder
-        run: pwd
+    - name: Show current directory 
+      run: pwd 
 
-      - name: Show files
-        run: ls -la
+    - name: list files
+      run: ls -la
+
+
+
+
+    
+   
