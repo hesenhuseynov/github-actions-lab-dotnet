@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="GitHubActionsLab.Api/GitHubActionsLab.Api.csproj" />
+  <Project Path="GitHubActionsLab.Tests/GitHubActionsLab.Tests.csproj" />
+</Solution>
