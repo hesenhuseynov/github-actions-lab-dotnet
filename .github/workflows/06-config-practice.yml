@@ -1,12 +1,27 @@
-name : Post welome comment 
+name: Manual Workflow test 
 
-on: 
-  pull_request:
-    types: [opened]
-permissions:
- pull-requests: write
 
-jobs: 
-  welcome: 
-    name: Post welcome comment
-    runs-on: ubuntu-latest 
+on:
+ workflow_dispatch:
+   inputs:
+      logLevel:
+        description: 'Log level'
+        required: true 
+        default: 'warning'
+        type: choice
+        options:
+         - info 
+         - warning 
+         - error  
+      tags:
+       description: 'Test scenari logs'
+       required: false
+       type: string 
+jobs:
+ test-inputs: 
+  runs-on: ubuntu-latest 
+  steps:
+  - name:  Github Contextden gelen datalari yoxla 
+    run: |
+      echo "Secilen Log Sviyessi ${{github.event.inputs.loglevel}}"
+      echo "Daxil edilən Teqlər: ${{ github.event.inputs.tags }}"
