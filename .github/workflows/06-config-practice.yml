@@ -20,18 +20,15 @@ on:
 
   schedule:
     - cron: '25 13 26 5 *'
-
+    
 jobs:
-  test a-config:
+  test-config:
     runs-on: ubuntu-latest
 
     steps:
       - name: Show trigger info
-        run: |
+        run: |  
           echo "Workflow triggered!"
           echo "Event name: ${{ github.event_name }}"
-          echo "Schedule expression: ${{ github.event.schedule }}"
-          echo "UTC time:"
-          date -u
-          echo "Baku time:"
-          TZ="Asia/Baku" date
+          echo "Environment: ${{ inputs.environment }}"
+          echo "Run tests: ${{ inputs.runTests}}"  
