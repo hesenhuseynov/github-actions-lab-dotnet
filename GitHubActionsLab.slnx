@@ -1,4 +1,7 @@
 <Solution>
+  <Folder Name="/Solution Items/">
+    <File Path=".github/workflows/01-hello-actions.yml" />
+  </Folder>
   <Project Path="GitHubActionsLab.Api/GitHubActionsLab.Api.csproj" />
   <Project Path="GitHubActionsLab.Tests/GitHubActionsLab.Tests.csproj" />
 </Solution>

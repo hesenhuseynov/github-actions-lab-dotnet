@@ -1,29 +1,22 @@
-name: 03 - Pull Request Trigger Test
+name: 02- Push Main Workflow
 
 on:
-  workflow_dispatch:
-
-  push:
-    branches:
-      - main
-
-  pull_request:
-    branches:
-      - main
+ push:
+  branches:
+   - main
 
 jobs:
-  pr-trigger-test:
-    runs-on: ubuntu-latest
+  push-test:
+   name: Test push trigger 
+   runs-on: ubuntu-latest
 
-    steps:
-      - name: Show event name
-        run: echo "Event name is ${{ github.event_name }}"
+   steps:
+   - name: show event name
+     run: echp "Event name  is ${{github.event.name}}"
+   
+   - name: Show git ref 
+     run: echo "Git ref is ${{github.ref}}"
+   - name: Show actor
+     run: echo  "Triggered by ${{github.actor}}"
 
-      - name: Show branch/ref
-        run: echo "Git ref is ${{ github.ref }}"
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Show files
-        run: ls -la
+    

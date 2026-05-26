@@ -35,3 +35,4 @@ C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Api\obj\Debug\net8.
 C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Api\obj\Debug\net8.0\GitHubActionsLab.Api.pdb
 C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Api\obj\Debug\net8.0\GitHubActionsLab.Api.genruntimeconfig.cache
 C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Api\obj\Debug\net8.0\ref\GitHubActionsLab.Api.dll
+C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Api\obj\Debug\net8.0\GitHubActionsLab.Api.sourcelink.json

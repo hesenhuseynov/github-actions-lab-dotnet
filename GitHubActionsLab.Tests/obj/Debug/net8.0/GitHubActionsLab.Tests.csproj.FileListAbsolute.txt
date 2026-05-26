@@ -111,3 +111,4 @@ C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Tests\obj\Debug\net
 C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Tests\obj\Debug\net8.0\GitHubActionsLab.Tests.pdb
 C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Tests\obj\Debug\net8.0\GitHubActionsLab.Tests.genruntimeconfig.cache
 C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Tests\obj\Debug\net8.0\ref\GitHubActionsLab.Tests.dll
+C:\Users\User\source\repos\GitHubActionsLab\GitHubActionsLab.Tests\obj\Debug\net8.0\GitHubActionsLab.Tests.sourcelink.json
