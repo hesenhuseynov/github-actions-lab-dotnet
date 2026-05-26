@@ -1,34 +1,12 @@
-name: 06 - Workflow Configuration Practice
+name : Post welome comment 
 
-on:
-  workflow_dispatch:
-    inputs:
-      environment:
-        description: 'Which environment'
-        required: true
-        default: 'staging'
-        type: choice
-        options:
-          - staging
-          - production
+on: 
+  pull_request:
+    types: [opened]
+permissions:
+ pull-requests: write
 
-      runTests:
-        description: 'Run test step?'
-        required: true
-        default: true
-        type: boolean
-
-  schedule:
-    - cron: '25 13 26 5 *'
-    
-jobs:
-  test-config:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Show trigger info
-        run: |  
-          echo "Workflow triggered!"
-          echo "Event name: ${{ github.event_name }}"
-          echo "Environment: ${{ inputs.environment }}"
-          echo "Run tests: ${{ inputs.runTests}}"  
+jobs: 
+  welcome: 
+    name: Post welcome comment
+    runs-on: ubuntu-latest 
