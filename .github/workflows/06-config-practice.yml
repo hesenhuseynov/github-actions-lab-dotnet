@@ -19,9 +19,9 @@ on:
         type: boolean
 
   schedule:
-    - cron: '33 16 26 5 *'
+    - cron: '54 16 26 5 *'
       timezone: 'Asia/Baku'
-
+     
 jobs:
   test-config:
     runs-on: ubuntu-latest
@@ -32,4 +32,5 @@ jobs:
           echo "Workflow triggered!"
           echo "Event name: ${{ github.event_name }}"
           echo "Environment: ${{ inputs.environment }}"
-          echo "Run tests: ${{ inputs.runTests }}"
+          echo "Run tests: ${{ inputs.runTests}}"  
+
