@@ -19,17 +19,19 @@ on:
         type: boolean
 
   schedule:
-    - cron: '09 17 26 5 *'
-      timezone: 'Asia/Baku'
-    
+    - cron: '35 13 26 5 *'
+
 jobs:
   test-config:
     runs-on: ubuntu-latest
 
     steps:
       - name: Show trigger info
-        run: |  
+        run: |
           echo "Workflow triggered!"
           echo "Event name: ${{ github.event_name }}"
-          echo "Environment: ${{ inputs.environment }}"
-          echo "Run tests: ${{ inputs.runTests}}"  
+          echo "Schedule expression: ${{ github.event.schedule }}"
+          echo "UTC time:"
+          date -u
+          echo "Baku time:"
+          TZ="Asia/Baku" date
