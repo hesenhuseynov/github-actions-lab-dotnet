@@ -1,0 +1,23 @@
+name: 06 - Workflow Configuration Practice 
+ 
+on: 
+ workflow_dispatch:
+  inputs:
+    enviroment:
+     description: 'Which enviroment'
+     required: true
+     default: 'stagging'
+     type: choice
+     options:
+     - staging
+     - production 
+    runTests: 
+     description: 'Run test step ?'
+     required: true
+     default: true
+     type: boolean
+
+ schedule:
+  - cron: '19 16  26 5 '     
+   
+      
