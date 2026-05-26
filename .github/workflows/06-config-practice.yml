@@ -1,27 +1,33 @@
-name: Manual Workflow test 
-
+name : Task workflow  
 
 on:
  workflow_dispatch:
    inputs:
-      logLevel:
-        description: 'Log level'
-        required: true 
-        default: 'warning'
-        type: choice
+      enviroment: 
+        description: 'Enviroment choose'
+        required: true
+        default: 'Dev'
+        type: choice 
         options:
-         - info 
-         - warning 
-         - error  
-      tags:
-       description: 'Test scenari logs'
-       required: false
-       type: string 
+        - Staging
+        - Production
+        - Development
+      run_db_migraitons: 
+        description: "Is it  start to work  base migrations"
+        required: true 
+        default: false 
+        type: boolean
+      release_version:
+        description: 'Release version (məs: v1.0.3)' 
+        required: true 
+        type: string
+       
 jobs:
- test-inputs: 
-  runs-on: ubuntu-latest 
-  steps:
-  - name:  Github Contextden gelen datalari yoxla 
-    run: |
-      echo "Secilen Log Sviyessi ${{github.event.inputs.loglevel}}"
-      echo "Daxil edilən Teqlər: ${{ github.event.inputs.tags }}"
+  print-inputs:
+   runs-on: ubuntu-latest 
+   steps:
+     - name: Daxil edilen meluamtlar  ekrana cap et 
+       run: | 
+        echo "Hedef Muhit  ${{github.event.inputs.environment}}"
+        echo "Miqrasiyalar  ise dusecek mi ?  ${{github.event.inputs.run_db_migrations}}"
+        echo "Deploy edilen  versiya: ${{github.event.inputs.release_version}}"
