@@ -12,11 +12,12 @@ jobs:
 
    steps:
    - name: show event name
-     run: echp "Event name  is ${{github.event.name}}"
+     run: echo  "Event name  is ${{github.event.name}}"
    
    - name: Show git ref 
      run: echo "Git ref is ${{github.ref}}"
    - name: Show actor
      run: echo  "Triggered by ${{github.actor}}"
 
+    
     
