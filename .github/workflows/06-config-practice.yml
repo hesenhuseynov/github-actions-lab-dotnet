@@ -19,10 +19,10 @@ on:
         type: boolean
 
   schedule:
-    - cron: '35 13 26 5 *'
+    - cron: '25 13 26 5 *'
 
 jobs:
-  test-config:
+  test a-config:
     runs-on: ubuntu-latest
 
     steps:
