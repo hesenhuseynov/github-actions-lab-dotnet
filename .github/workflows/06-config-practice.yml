@@ -17,7 +17,7 @@ jobs:
   runs-on: ubuntu-latest
   steps:
   - name: Kodu Runnere cek
-    uses:   actions/ceckout@v4
+    uses:   actions/checkout@v4
   - name:   dotnet sdk qurasdir runner e 
     uses:   actions/setup-dotnet@v4
     with: 
