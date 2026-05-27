@@ -1,32 +1,36 @@
-name : dotnet workflow task  
-
+name: dotnet workflow task
 on: 
- workflow_dispatch:
-   inputs:
-    builder_configurations: 
-     description: "Build Konfiguryasiası (Debug ve ya Release)"  
-     required: true 
-     default: 'Release'
-     type: choice 
-     options:
-      - Debug 
-      - Release 
+  workflow_dispatch:
+    inputs:
+      builder_configurations: 
+        description: "Build Konfiqurasiyası (Debug və ya Release)"  
+        required: true 
+        default: 'Release'
+        type: choice 
+        options:
+          - Debug 
+          - Release 
+
+# Node 24 xəbərdarlığını yox etmək üçün bu mühit dəyişənini əlavə edirik
 
 jobs: 
- build-and-test:
-  runs-on: ubuntu-latest
-  steps:
-  - name: Kodu Runnere cek
-    uses:   actions/checkout@v4
-  - name:   dotnet sdk qurasdir runner e 
-    uses:   actions/setup-dotnet@v4
-    with: 
-      dotnet-version : '8.0.x' 
-  - name: pakatleri berpa et  
-    run:  dotnet-restore  
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu Runnere cek
+        uses: actions/checkout@v4
+        
+      - name: dotnet sdk qurasdir runner e 
+        uses: actions/setup-dotnet@v4
+        with: 
+          dotnet-version: '8.0.x' 
+          
+      - name: Paketleri berpa et  
+        # DÜZƏLİŞ: dotnet-restore yox, dotnet restore olmalıdır
+        run: dotnet restore  
 
-  - name: Proyektleri build et 
-    run : dotnet build --configuration  ${{github.event.inputs.builder_configurations}}  --no-restore
-   
-  - name:  Testleri ise sal  
-    run:  dotnet test --configuration ${{github.event.inputs.builder_configurations}} --no-build  --verbosity normal
+      - name: Proyektleri build et 
+        run: dotnet build --configuration ${{github.event.inputs.builder_configurations}} --no-restore
+       
+      - name: Testleri ise sal  
+        run: dotnet test --configuration ${{github.event.inputs.builder_configurations}} --no-build --verbosity normal
