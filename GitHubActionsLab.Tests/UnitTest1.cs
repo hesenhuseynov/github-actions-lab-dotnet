@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Http.Metadata;
+
 namespace GitHubActionsLab.Tests
 {
     public class UnitTest1
@@ -5,7 +7,9 @@ namespace GitHubActionsLab.Tests
         [Fact]
         public void Test1()
         {
-
+            Assert.True(true);
         }
+
+        
     }
 }

@@ -1,33 +1,32 @@
-name : Task workflow  
+name : dotnet workflow task  
 
-on:
+on: 
  workflow_dispatch:
    inputs:
-      enviroment: 
-        description: 'Enviroment choose'
-        required: true
-        default: 'Dev'
-        type: choice 
-        options:
-        - Staging
-        - Production
-        - Development
-      run_db_migraitons: 
-        description: "Is it  start to work  base migrations"
-        required: true 
-        default: false 
-        type: boolean
-      release_version:
-        description: 'Release version (məs: v1.0.3)' 
-        required: true 
-        type: string
-       
-jobs:
-  print-inputs:
-   runs-on: ubuntu-latest 
-   steps:
-     - name: Daxil edilen meluamtlar  ekrana cap et 
-       run: | 
-        echo "Hedef Muhit  ${{github.event.inputs.environment}}"
-        echo "Miqrasiyalar  ise dusecek mi ?  ${{github.event.inputs.run_db_migrations}}"
-        echo "Deploy edilen  versiya: ${{github.event.inputs.release_version}}"
+    builder_configurations: 
+     description: "Build Konfiguryasiası (Debug ve ya Release)"  
+     required: true 
+     default: 'Release'
+     type: choice 
+     options:
+      - Debug 
+      - Release 
+
+jobs: 
+ build-and-test:
+  runs-on: ubuntu-latest
+  steps:
+  - name: Kodu Runnere cek
+    uses:   actions/ceckout@v4
+  - name:   dotnet sdk qurasdir runner e 
+    uses:   actions/setup-dotnet@v4
+    with: 
+      dotnet-version : '8.0.x' 
+  - name: pakatleri berpa et  
+    run:  dotnet-restore  
+
+  - name: Proyektleri build et 
+    run : dotnet build --configuration  ${{github.event.inputs.builder_configurations}}  --no-restore
+   
+  - name:  Testleri ise sal  
+    run:  dotnet test --configuration ${{github.event.inputs.builder_configurations}} --no-build  --verbosity normal
