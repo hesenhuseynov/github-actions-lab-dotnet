@@ -9,10 +9,8 @@ on:
         type: choice 
         options:
           - Debug 
-          - Release 
-
+          - Release
 # Node 24 xəbərdarlığını yox etmək üçün bu mühit dəyişənini əlavə edirik
-
 jobs: 
   build-and-test:
     runs-on: ubuntu-latest
